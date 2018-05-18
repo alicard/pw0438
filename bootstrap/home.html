@@ -5,19 +5,37 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="FA/web-fonts-with-css/css/fontawesome-all.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	
+	<script>
+		var app = angular.module("myApp", ["ngRoute"]);
+		app.config(function($routeProvider) {
+			$routeProvider
+			.when("/", {
+				templateUrl : "main.html"
+			})
+			.when("/about", {
+				templateUrl : "about.html"
+			})
+			.when("/product", {
+				templateUrl : "product.html"
+			});
+		});
+	</script>
+	
 </head>
 <body>
-	<div class="container-fluid">
+	<div ng-app="myApp" class="container-fluid">
 		<div class="row">
-		<div class="col-md-12 menu">
-			<ul>
-				<li><a href="#">Search</a></li>
-				<li><a href="#">Troli</a></li>
-				<li><a href="#">Kategori</a></li>
-				<li><a href="#">Akun</a></li>
-			</ul>
-		</div>
+			<div class="col-md-12 menu">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="product.html">Product</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
 			<div class="col-md-12 header">
 				<h1>ALISHOP<br>
 					<small>Belanja puas, uang terkuras</small>
@@ -30,21 +48,9 @@
 					<li><a href="">NEW ARIVAL</a></li>	
 				</ul>
 			</div>
-		<div class="row content">
-			<div class="col-md-3 subc text-center">
-				<div class="alert alert-info"><img src="sam.png"></div>
-					<p>SAMSUNG</p>
-			</div>
-
-			<div class="col-md-3 subc text-center">
-				<div class="alert alert-info"><img src="op.jpg"></div>
-					<p>OPO</p>
-			</div>
-			<div class="col-md-3 subc text-center">
-				<div class="alert alert-info"><img src="mi.jpg"></div>
-					<p>XIAOMI</p>
-			</div>
-		</div>
+			
+			<div ng-view></div> 
+		
 		</div>
 	</div>
 </body>
